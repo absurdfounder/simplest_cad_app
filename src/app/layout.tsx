@@ -4,6 +4,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'CAD Chat - 3D Model Viewer & Editor',
   description: 'Browser-based 3D CAD viewer with AI-assisted parametric editing',
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
