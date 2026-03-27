@@ -58,7 +58,7 @@ interface AppState {
   rightPanelOpen: boolean;
   bottomTrayOpen: boolean;
   rightPanelTab: 'selection' | 'measures' | 'parameters' | 'model' | 'history';
-  bottomTrayTab: 'versions' | 'export' | 'console';
+  bottomTrayTab: 'versions' | 'export' | 'screenshots' | 'console';
   consoleMessages: string[];
 
   // Actions

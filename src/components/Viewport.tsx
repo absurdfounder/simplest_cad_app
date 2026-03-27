@@ -421,7 +421,56 @@ function ViewportScene() {
 // Exported wrapper component
 // ---------------------------------------------------------------------------
 
+function WebGLFallback() {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#1a1a2e',
+        color: '#eaeaea',
+        padding: '2rem',
+        textAlign: 'center',
+      }}
+    >
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#e94560" strokeWidth="1.5">
+        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01" />
+      </svg>
+      <h2 style={{ margin: '1rem 0 0.5rem', fontSize: '1.25rem' }}>WebGL Not Available</h2>
+      <p style={{ color: '#8892b0', maxWidth: '400px', lineHeight: 1.5 }}>
+        Your browser or environment does not support WebGL, which is required for the 3D viewport.
+        Try opening this app in a browser with GPU acceleration enabled (Chrome, Firefox, Edge).
+      </p>
+    </div>
+  );
+}
+
+function isWebGLAvailable(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(
+      window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))
+    );
+  } catch {
+    return false;
+  }
+}
+
 export default function Viewport() {
+  const [webglOk, setWebglOk] = React.useState(true);
+
+  React.useEffect(() => {
+    setWebglOk(isWebGLAvailable());
+  }, []);
+
+  if (!webglOk) return <WebGLFallback />;
+
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <Canvas

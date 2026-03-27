@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { useAppStore } from '@/store/useAppStore';
 import { exportSTL, exportOBJ } from '@/lib/modelLoader';
+import ScreenshotPanel from './ScreenshotPanel';
 
 export default function BottomTray() {
   const {
@@ -57,6 +58,7 @@ export default function BottomTray() {
   const tabs: { key: typeof bottomTrayTab; label: string }[] = [
     { key: 'versions', label: 'Versions' },
     { key: 'export', label: 'Export' },
+    { key: 'screenshots', label: 'Screenshots' },
     { key: 'console', label: 'Console' },
   ];
 
@@ -83,7 +85,7 @@ export default function BottomTray() {
       </div>
 
       {/* Tray body */}
-      <div className="h-[200px] bg-[#16213e] border-t border-[#2a2a4a] flex flex-col">
+      <div className={`${bottomTrayTab === 'screenshots' ? 'h-[280px]' : 'h-[200px]'} bg-[#16213e] border-t border-[#2a2a4a] flex flex-col transition-all`}>
         {/* Tab bar */}
         <div className="flex border-b border-[#2a2a4a] shrink-0">
           {tabs.map((tab) => (
@@ -180,6 +182,9 @@ export default function BottomTray() {
               </div>
             </div>
           )}
+
+          {/* Screenshots tab */}
+          {bottomTrayTab === 'screenshots' && <ScreenshotPanel />}
 
           {/* Console tab */}
           {bottomTrayTab === 'console' && (

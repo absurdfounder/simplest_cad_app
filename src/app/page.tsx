@@ -69,7 +69,7 @@ export default function Home() {
               className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 px-3 py-1 rounded bg-cad-surface/80 hover:bg-cad-accent text-cad-muted hover:text-cad-text text-xs"
               title={bottomTrayOpen ? 'Hide tray' : 'Show tray'}
             >
-              {bottomTrayOpen ? '▼ Hide' : '▲ Versions / Export / Console'}
+              {bottomTrayOpen ? '▼ Hide' : '▲ Versions / Export / Screenshots / Console'}
             </button>
           </div>
 
