@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cad-bg: #1a1a2e;
+  --cad-surface: #16213e;
+  --cad-accent: #0f3460;
+  --cad-highlight: #e94560;
+  --cad-text: #eaeaea;
+  --cad-muted: #8892b0;
+  --cad-border: #2a2a4a;
+  --cad-success: #4ade80;
+  --cad-warning: #fbbf24;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--cad-bg);
+  color: var(--cad-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+#__next {
+  width: 100%;
+  height: 100%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cad-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cad-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cad-muted);
+}
+
+/* Custom input styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--cad-border);
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--cad-highlight);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--cad-highlight);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Transition for panels */
+.panel-transition {
+  transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+}
+
+/* Measurement label */
+.measurement-label {
+  background: rgba(233, 69, 96, 0.9);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Chat message code blocks */
+.chat-code {
+  background: var(--cad-accent);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
